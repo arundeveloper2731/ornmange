@@ -7,6 +7,8 @@ function logout() {
     window.location.href = "login.html";
 }
 
+const API = "https://ornmanagement-production.up.railway.app";
+
 
 // chart
 let chart;
@@ -17,7 +19,7 @@ window.onload = function () {
 
 async function loadDashboard() {
     try {
-        const response = await fetch("/api/index");
+        const response = await fetch("${API}/api/index");
         if (!response.ok) {
             throw new Error("API Error");
         }
@@ -41,7 +43,7 @@ async function loadDashboard() {
 
 
         //Table
-        loadRecentEntries(data.recentEntries ||[]);
+        loadRecentEntries(data.recentEntries || []);
         //chart
         loadChart(data);
     } catch (error) {
@@ -93,9 +95,9 @@ function loadChart(data) {
             datasets: [{
 
                 data: [
-                        data.matchedCount || 0,
-                        data.duplicateCount || 0,
-                        data.unmatchedCount || 0
+                    data.matchedCount || 0,
+                    data.duplicateCount || 0,
+                    data.unmatchedCount || 0
                 ],
 
                 backgroundColor: [
