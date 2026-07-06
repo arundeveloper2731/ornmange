@@ -1,0 +1,575 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+body{
+    background: #ffff;
+}
+
+.container{
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width: 260px;
+    background: #1e293b;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.sidebar h2{
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+.sidebar ul{
+    list-style: none;
+}
+.sidebar ul li{
+    margin-bottom: 10px;
+}
+.sidebar ul li a{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    transition: .3s;
+}
+.sidebar ul li a:hover{
+    background: #334155;
+}
+.logout{
+    margin-top: 150px;
+}
+
+.logout a{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.logout a:hover{
+    background: #334155;
+}
+
+/*  Mobile menu*/
+.menu-btn{
+    display: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+/* excel upload */
+
+#page-excel{
+    margin-left:260px;
+    padding:25px;
+    width:calc(100% - 260px);
+}
+.upload-layout{
+    display: flexbox;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+.upload-container{
+    width:100%;
+}
+
+.drop-zone{
+    min-height:220px;
+    border:2px dashed #2563eb;
+    border-radius:12px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:#f8fbff;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.drop-zone:hover{
+    background:#eef5ff;
+}
+
+.drop-zone.dragover{
+    border-color: #16a34a;
+    background:#ecfff3;
+}
+
+.upload-icon{
+    font-size:50px;
+}
+
+.drop-zone h3{
+    color:var#1e293b;
+}
+
+.drop-zone p{
+    color:#64748b;
+}
+
+
+.upload-files{
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+#uploadedFileList{
+    list-style:none;
+    padding:0;
+    margin-top:10px;
+    max-height:300px;
+    overflow-y:auto;
+}
+.delete-btn{
+
+    background:red;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.delete-btn:hover{
+
+    background:darkred;
+
+}
+
+#uploadedFileList li{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#uploadedFileList li:hover{
+    background:#f3f3f3;
+}
+#fileName{
+    margin-top:10px;
+    font-weight:600;
+    color:#16a34a;
+}
+
+.table-wrap{
+    overflow:auto;
+    max-height:600px;
+}
+
+#excelTable{
+    width:100%;
+    border-collapse:collapse;
+    min-width:1500px;
+}
+
+#excelTable th{
+    background:#2563eb;
+    color:white;
+    padding:12px;
+    white-space:nowrap;
+    position:sticky;
+    top:0;
+}
+
+#excelTable td{
+    padding:10px;
+    border:1px solid #ddd;
+    white-space:nowrap;
+}
+
+#excelTable tbody tr:nth-child(even){
+    background:#f8fafc;
+}
+
+#excelTable tbody tr:hover{
+    background:#eef5ff;
+}
+
+.btn{
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+/* Save to Database Button */
+#uploadBtn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+#uploadBtn:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(16, 185, 129, 0.4);
+}
+
+#uploadBtn:active {
+    transform: scale(0.97);
+}
+
+#uploadBtn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-primary{
+    background:#2563eb;
+    color:white;
+}
+.card{
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    margin-top:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.page-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom:20px;
+}
+
+.page-header h1{
+    margin-bottom:5px;
+    color: #1e293b;
+}
+
+.form-section{
+    flex: 2;
+}
+
+.form-section-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+@media(max-width:768px){
+    .container{
+        margin-left: 0;
+        width: 100%;
+    }
+    .menu-btn{
+        display: block;
+    }
+
+    .drop-zone{
+        min-height:180px;
+        padding:20px;
+    }
+
+    #excelTable{
+        font-size:12px;
+    }
+    .sidebar{
+        left: -260px;
+        z-index: 1000;        
+    }
+    .sidebar.active{
+        left: 0;
+    }
+
+    #page-excel{
+        margin-left:0;
+        width:100%;
+        padding:15px;
+    }
+
+}
+
+
+
+/* ============ Two column layout ============ */
+.upload-layout{
+    display: flex;
+    gap: 25px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.upload-layout .upload-container{
+    flex: 1.2;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.upload-layout .upload-files{
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    max-height: 420px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.badge{
+    background:#2563eb;
+    color:#fff;
+    font-size:12px;
+    padding:2px 9px;
+    border-radius:999px;
+}
+
+/* ============ Uploaded file list ============ */
+#uploadedFileList{
+    list-style:none;
+    padding:0;
+    margin-top:10px;
+    overflow-y:auto;
+    flex:1;
+}
+
+#uploadedFileList li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 12px;
+    border-bottom:1px solid #eee;
+    cursor:pointer;
+    transition:.2s;
+    border-radius:6px;
+}
+
+#uploadedFileList li:hover{
+    background:#f3f7ff;
+}
+
+#uploadedFileList li.active{
+    background:#e8f0fe;
+    border-left:3px solid #2563eb;
+}
+
+#uploadedFileList li.empty-msg{
+    color:#94a3b8;
+    cursor:default;
+    justify-content:center;
+}
+
+.file-info{
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.file-info .orn-no{
+    font-weight:600;
+    color:#1e293b;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.file-info .scheme-name{
+    font-size:12px;
+    color:#64748b;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.row-actions{
+    display:flex;
+    gap:8px;
+    flex-shrink:0;
+}
+
+.row-actions button{
+    border:none;
+    border-radius:6px;
+    width:30px;
+    height:30px;
+    cursor:pointer;
+    color:#fff;
+    font-size:13px;
+}
+
+.edit-btn{
+    background:#2563eb;
+}
+.edit-btn:hover{
+    background:#1d4ed8;
+}
+
+.delete-btn{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:0;
+    border-radius:6px;
+    cursor:pointer;
+}
+.delete-btn:hover{
+    background:#dc2626;
+}
+
+/* highlight selected row in preview table */
+#excelTable tbody tr.selected-row{
+    background:#fff7d6 !important;
+}
+
+/* ============ Edit Modal ============ */
+.modal-overlay{
+    display:none;
+    position:fixed;
+    top:0;left:0;right:0;bottom:0;
+    background:rgba(0,0,0,.5);
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal-overlay.active{
+    display:flex;
+}
+
+.modal-box{
+    background:#fff;
+    width:90%;
+    max-width:700px;
+    max-height:85vh;
+    border-radius:12px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 20px;
+    background:#1e293b;
+    color:#fff;
+}
+
+.modal-header h3{
+    margin:0;
+}
+
+.modal-close{
+    cursor:pointer;
+    font-size:22px;
+    line-height:1;
+}
+
+.modal-body{
+    padding:20px;
+    overflow-y:auto;
+}
+
+#editForm{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.form-field{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.form-field label{
+    font-size:12px;
+    font-weight:600;
+    color:#475569;
+    text-transform:capitalize;
+}
+
+.form-field input{
+    padding:8px 10px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    font-size:13px;
+}
+
+.form-field input:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+.modal-footer{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    padding:14px 20px;
+    border-top:1px solid #eee;
+}
+
+.btn-cancel{
+    background:#e2e8f0;
+    color:#1e293b;
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+.btn-cancel:hover{
+    background:#cbd5e1;
+}
+
+@media(max-width:900px){
+    .upload-layout{
+        flex-direction:column;
+    }
+    .upload-layout .upload-files{
+        max-height:300px;
+    }
+    #editForm{
+        grid-template-columns:1fr;
+    }
+}

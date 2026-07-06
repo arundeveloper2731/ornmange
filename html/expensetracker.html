@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="/css/expensetracker.css">
+
+    <!-- fontawersome cdn -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+
+         <!-- SIDEBAR -->
+          <div class="sidebar" >
+                <h2>ORN MANAGEMENT SYSTEM</h2>
+
+                <ul>
+                    <li><a href="/index" ><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                    <li><a href="/orn-entry"> <i class="fa-solid fa-file-circle-plus"></i>ORN ENTRY</a></li>
+                    <li><a href="/excel-upload"><i class="fa-solid fa-file-excel"></i>Excel Upload</a></li>
+                    <li><a href="/orn-matching"><i class="fa-solid fa-check"></i>ORN MATCH</a></li>
+                    <li><a href="/expensetracker"><i class="fa-solid fa-money-bill"></i>ADD EXPENSE</a></li>
+                    <li><a href="/reports"><i class="fa-regular fa-file"></i>REPORTS</a></li>
+
+                </ul>
+                <div class="logout">
+                        <a href="/logout" >
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Logout
+                        </a>
+                </div>
+            </div>
+
+            <div class="page-header">
+        <div class="menu-btn" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <h1>Expense Management</h1>
+        <p>Log all field expenses e</p>
+    </div>
+<form action="" id="expenseForm">
+    <div class="form-section" >
+
+        <div class="form-section-title">
+            Add New Expense
+        </div>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Expense Name</label>
+                <select id="expenseName">
+                    <option value="">Select category</option>
+                    <option>Fuel</option>
+                    <option>Cable Purchase</option>
+                    <option>Travel</option>
+                    <option>Technician Allowance</option>
+                    <option>Equipment</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Amount </label>
+                <input type="number" id="amount" placeholder="0.00">
+            </div>
+
+            <div class="form-group">
+                <label>Expense Date</label>
+                <input type="date" id="expenseDate">
+            </div>
+
+            <div class="form-group">
+                <label>Related ORN</label>
+                <input type="text" id="orn" placeholder="ORN-10234">
+            </div>
+
+            <div class="form-group full-width">
+                <label>Description</label>
+                <textarea id="description" placeholder="Add notes..."></textarea>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn-primary">
+            Save Expense
+        </button>
+
+    </div>
+
+
+</form>
+    
+
+    <div class="card">
+
+        <div class="card-title">
+             Expense List
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>ORN</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+
+                <tbody id="expenseTableBody">
+
+                   
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+
+    </div>
+    <script src="/javascript/expense.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORN-Matching</title>
+
+    <link rel="stylesheet" href="/css/orn-matching.css">
+    <!-- fontawersome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h2>ORN MANAGEMENT SYSTEM</h2>
+            <ul>
+                <li><a href="/index"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                <li><a href="/orn-entry"> <i class="fa-solid fa-file-circle-plus"></i>ORN ENTRY</a></li>
+                <li><a href="/excel-upload"><i class="fa-solid fa-file-excel"></i>Excel Upload</a></li>
+                <li><a href="/orn-matching"><i class="fa-solid fa-check"></i>ORN MATCH</a></li>
+                <li><a href="/expensetracker"><i class="fa-solid fa-money-bill"></i>ADD EXPENSE</a></li>
+                <li><a href="/reports"><i class="fa-regular fa-file"></i>REPORTS</a></li>
+            </ul>
+            <div class="logout">
+                <a href="/logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+
+        <!-- Main -->
+
+        <div class="main-content">
+
+            <!-- Header -->
+
+            <div class="page-header">
+                <div class="left-header">
+                    <div class="menu-btn" onclick="toggleMenu()">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <div>
+                        <h1>ORN Matching Engine</h1>
+                        <p>
+                            Compare Manual Entry Records with Excel Imported Records
+                        </p>
+                    </div>
+                </div>
+                <div class="match-controls">
+                    <input type="text" id="manualOrnInput" list="manualOrnList" placeholder="All Manual ORNs" autocomplete="off">
+                    <datalist id="manualOrnList">
+                        <option value="All">All ORNs</option>
+                    </datalist>
+                    <select id="excelFileSelect">
+                        <option value="all">All Excel Files</option>
+                    </select>
+                    <button id="runMatchBtn">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                        Run Matching
+                    </button>
+                </div>
+            </div>
+            <!-- Summary -->
+            <div class="summary-cards">
+                <div class="card matched-card">
+                    <h3>Matched</h3>
+                    <span id="matchedCount">0</span>
+                </div>
+                <div class="card unmatched-card">
+                    <h3>UnMatched</h3>
+                    <span id="unmatchedCount">0</span>
+                </div>
+                <div class="card missing2-card">
+                    <h3>Missing Manual</h3>
+                    <span id="missingManualCount">0</span>
+                </div>
+                <div class="card duplicate-card">
+                    <h3>Duplicate</h3>
+                    <span id="duplicateCount">0</span>
+                </div>
+            </div>
+            <!-- Empty -->
+            <div class="empty-state" id="emptyState">
+                <i class="fa-solid fa-database"></i>
+                <h2>No Matching Results</h2>
+                <p>Click Run Matching button to compare Manual Entry Data with Excel Imported Data.
+                </p>
+            </div>
+
+            <!-- Result -->
+            <div class="result-section hidden" id="resultSection">
+                <div class="toolbar">
+                    <input type="text" id="searchInput" placeholder="Search ORN">
+                    <select id="statusFilter">
+                        <option value="all">All Status</option>
+                        <option value="Matched">Matched</option>
+                        <option value="Unmatched">Unmatched</option>
+                        <option value="Missing Manual">Missing Manual</option>
+                        <option value="Duplicate">Duplicate</option>
+                    </select>
+                </div>
+
+                <div class="table-wrapper">
+                    <table id="matchTable">
+                        <thead>
+                            <tr>
+                                <th>Manual ORN</th>
+                                <th>Customer</th>
+                                <th>Mobile</th>
+                                <th>Excel ORN</th>
+                                <th>Status</th>
+                                <th>Match %</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- JS Fill -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Modal -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>ORN Comparison Details</h2>
+                <button id="closeModal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="compare-container">
+                <!-- Manual -->
+                <div class="compare-box">
+                    <h3>Manual Entry</h3>
+                    <table class="compare-table">
+                        <tbody id="manualBody">
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Excel -->
+                <div class="compare-box">
+                    <h3>Excel Imported</h3>
+                    <table class="compare-table">
+                        <tbody id="excelBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascript/orn-match.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div id="login-page">
+        <div class="container">
+            <div class="login-logo">
+                 <div class="brand">Air<span>Fiber</span></div>
+                <p>ORN Management System</p>
+            </div>
+       <div>
+            <form  id="loginform" action="/login" method="post">
+                <div class="input-group">
+                    <label for="">UserName</label>
+                    <input type="text" id="username" name="username" placeholder="enter username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="">Password</label>
+                    <input type="password" name="password" id="password" placeholder="password">
+                </div>
+
+                <button type="submit" class="btn btn-primary" >Login</button>
+            </form>
+
+       </div>
+        
+
+        <p>New User? 
+            <a href="/signup"><span>Create Account </span></a>
+        </p>
+    </div>
+
+    <div th:if="${param.error}" style="color:red;">
+            Invalid Username or Password
+        </div>
+
+        <div th:if="${param.logout}" style="color:green;">
+            Logged out successfully
+        </div>
+
+    </div>
+    <script th:src="@{/javascript/login.js}"></script>
+    
+</body>
+</html>

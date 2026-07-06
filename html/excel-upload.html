@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Upload</title>
+    <link rel="stylesheet" href="/css/excel-upload.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h2>ORN MANAGEMENT SYSTEM</h2>
+
+            <ul>
+                <li><a href="/index"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                <li><a href="/orn-entry"> <i class="fa-solid fa-file-circle-plus"></i>ORN ENTRY</a></li>
+                <li><a href="/excel-upload"><i class="fa-solid fa-file-excel"></i>Excel Upload</a></li>
+                <li><a href="/orn-matching"><i class="fa-solid fa-check"></i>ORN MATCH</a></li>
+                <li><a href="/expensetracker"><i class="fa-solid fa-money-bill"></i>ADD EXPENSE</a></li>
+                <li><a href="/reports"><i class="fa-regular fa-file"></i>REPORTS</a></li>
+
+            </ul>
+            <div class="logout">
+                <a href="/logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+
+        <div id="page-excel" class="page active">
+
+            <div class="page-header">
+                <div class="menu-btn" onclick="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <h1>Excel Upload</h1>
+                <p>Upload Excel / CSV file and preview data</p>
+            </div>
+
+            <div class="upload-layout">
+
+                <div class="upload-container">
+
+                    <div class="form-section-title">Upload Excel File</div>
+
+                    <input type="file" id="excelFile" accept=".xlsx,.xls,.csv" hidden>
+
+                    <div class="drop-zone" id="dropZone">
+                        <div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                        <h3>Drag & Drop Excel File</h3>
+                        <p>or click to browse</p>
+
+                        <button class="btn btn-primary" id="browseBtn" type="button">
+                            Browse File
+                        </button>
+
+                        <div id="fileName"></div>
+                    </div>
+
+                    <div class="button-container">
+                        <button id="uploadBtn" class="btn-primary">
+                            Save to Database
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="upload-files">
+
+                    <div class="card-title">
+                        Uploaded Files <span id="fileCount" class="badge">0</span>
+                    </div>
+
+                    <ul id="uploadedFileList">
+                        <li class="empty-msg">No records uploaded yet.</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+                    Excel Preview
+                </div>
+
+                <div class="table-wrap">
+
+                    <table id="excelTable">
+
+                        <thead></thead>
+
+                        <tbody></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="editModal" class="modal-overlay">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3>Edit Record</h3>
+                    <span class="modal-close" id="closeModalBtn">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm"></form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" id="cancelEditBtn">Cancel</button>
+                    <button type="button" class="btn-primary" id="saveEditBtn">Save Changes</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="/javascript/excel-upload.js"></script>
+</body>
+
+</html>

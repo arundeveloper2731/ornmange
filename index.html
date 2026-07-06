@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orn Management System</title>
+    <link rel="stylesheet" href="/css/dasboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- fontawersome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- APP -->
+
+    <div class="container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h2>ORN MANAGEMENT SYSTEM</h2>
+
+            <ul>
+                <li><a href="/index"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                <li><a href="/orn-entry"> <i class="fa-solid fa-file-circle-plus"></i>ORN ENTRY</a></li>
+                <li><a href="/excel-upload"><i class="fa-solid fa-file-excel"></i>Excel Upload</a></li>
+                <li><a href="/orn-matching"><i class="fa-solid fa-check"></i>ORN MATCH</a></li>
+                <li><a href="/expensetracker"><i class="fa-solid fa-money-bill"></i>ADD EXPENSE</a></li>
+                <li><a href="/reports"><i class="fa-regular fa-file"></i>REPORTS</a></li>
+
+            </ul>
+            <div class="logout">
+                <a href="/logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+
+        <!-- DASHBOARD  -->
+        <div class="main">
+            <div class="header">
+                <div class="menu-btn" onclick="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+
+                <h1>Dashboard</h1>
+                <p>Welcome </p>
+            </div>
+
+            <!-- cards -->
+            <div class="cards">
+                <div class="card">
+                    <h3>Total ORN</h3>
+                    <p id="totalORN">0</p>
+                </div>
+
+
+                <div class="card">
+                    <h3>Excel Records</h3>
+                    <p id="excelrecords">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Matched ORN</h3>
+                    <p id="matchedORN">0</p>
+                </div>
+                <div class="card">
+                    <h3>UnMatched ORN</h3>
+                    <p id="unMatchedORN">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Expenses</h3>
+                    <p id="totalExpense">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Duplicate</h3>
+                    <p id="duplicateORN">0</p>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+
+            <div class="dashboard-content">
+                <div class="table-section">
+                    <h2>Recent ORN Entries</h2>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ORN No</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="recentEntriesBody">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="chart-section">
+                    <h2>ORN Status Overview</h2>
+                    <canvas id="ornchart"></canvas>
+                    <div class="chart-info">
+                        <p><span class="green-dot"></span> <span id="matchedCount">0</span></p>
+                        <p><span class="yellow-dot"></span> <span id="duplicateCount">0</span></p>
+                        <p><span class="red-dot"> </span> <span id="unmatchedORN">0</span></p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/javascript/script.js"></script>
+
+</body>
+
+</html>
