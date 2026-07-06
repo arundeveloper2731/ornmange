@@ -13,7 +13,7 @@ function logout() {
     window.location.href = "/login";
 }
 
-const API = "https://ornmanagement-production.up.railway.app";
+const API = "ornmanagement-production.up.railway.app";
 // ==========================
 // Global ORN List
 // ==========================
