@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Password do not match");
             return;
         }
+        const API = "https://ornmanagement-production.up.railway.app";
 
         const user = {
             name: name,
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             password: password
         };
         try {
-            const response = await fetch("/signup", {
+            const response = await fetch("${API}/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

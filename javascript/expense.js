@@ -1,15 +1,15 @@
-function toggleMenu(){
+function toggleMenu() {
     document.querySelector(".sidebar")
-            .classList.toggle("active");
+        .classList.toggle("active");
 }
 function logout() {
     localStorage.removeItem("loggedInUser");
     window.location.href = "login.html";
 }
 
+const API = "https://ornmanagement-production.up.railway.app";
 
-
-const API_URL = "/api/expenses";
+const API_URL = "${API}/api/expenses";
 
 const form = document.getElementById("expenseForm");
 
@@ -33,10 +33,10 @@ form.addEventListener("submit", async function (e) {
 
     e.preventDefault();
     console.log(expenseName);
-console.log(amount);
-console.log(expenseDate);
-console.log(orn);
-console.log(description);
+    console.log(amount);
+    console.log(expenseDate);
+    console.log(orn);
+    console.log(description);
 
     const expense = {
 
@@ -137,14 +137,14 @@ async function loadExpenses() {
 
 // Delete
 
-async function deleteExpense(id){
+async function deleteExpense(id) {
 
-    if(!confirm("Delete this expense?"))
+    if (!confirm("Delete this expense?"))
         return;
 
-    await fetch(API_URL+"/"+id,{
+    await fetch(API_URL + "/" + id, {
 
-        method:"DELETE"
+        method: "DELETE"
 
     });
 
@@ -155,9 +155,9 @@ async function deleteExpense(id){
 
 // Edit
 
-async function editExpense(id){
+async function editExpense(id) {
 
-    const response = await fetch(API_URL+"/"+id);
+    const response = await fetch(API_URL + "/" + id);
 
     const expense = await response.json();
 

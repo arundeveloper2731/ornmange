@@ -8,6 +8,8 @@ function logout() {
     window.location.href = "login.html";
 }
 
+const API = "https://ornmanagement-production.up.railway.app";
+
 const excelFile   = document.getElementById("excelFile");
 const dropZone    = document.getElementById("dropZone");
 const browseBtn   = document.getElementById("browseBtn");
@@ -22,7 +24,6 @@ const saveEditBtn   = document.getElementById("saveEditBtn");
 
 let currentEditId = null;
 
-/* ================= Drag & Drop / Browse (preview only, before save) ================= */
 
 browseBtn.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -112,7 +113,6 @@ function generateTable(data) {
     });
 }
 
-/* ================= Upload to DB ================= */
 
 document.getElementById("uploadBtn").addEventListener("click", uploadFile);
 
@@ -134,7 +134,7 @@ async function uploadFile() {
 
     try {
 
-        const response = await fetch("/api/excel/upload", {
+        const response = await fetch("${API}/api/excel/upload", {
             method: "POST",
             body: formData
         });
@@ -160,12 +160,11 @@ async function uploadFile() {
     }
 }
 
-/* ================= Right side: Uploaded file list (file-wise) ================= */
 
 async function loadUploadedFiles() {
 
     try {
-        const response = await fetch("/api/excel/files");
+        const response = await fetch("${API}/api/excel/files");
 
         if (!response.ok) {
             throw new Error("Failed to load uploaded files");
@@ -232,7 +231,7 @@ function renderFileList(fileSummaries) {
 async function loadFileData(fileName) {
 
     try {
-        const response = await fetch(`/api/excel/by-file?fileName=${encodeURIComponent(fileName)}`);
+        const response = await fetch(`${API}/api/excel/by-file?fileName=${encodeURIComponent(fileName)}`);
 
         if (!response.ok) {
             throw new Error("Failed to load file data");
@@ -290,7 +289,7 @@ async function deleteFile(fileName) {
     }
 
     try {
-        const response = await fetch(`/api/excel/delete-file?fileName=${encodeURIComponent(fileName)}`, {
+        const response = await fetch(`${API}/api/excel/delete-file?fileName=${encodeURIComponent(fileName)}`, {
             method: "DELETE"
         });
 
@@ -318,7 +317,7 @@ async function deleteRecord(id, fileName) {
     }
 
     try {
-        const response = await fetch(`/api/excel/delete/${id}`, {
+        const response = await fetch(`${API}/api/excel/delete/${id}`, {
             method: "DELETE"
         });
 
@@ -415,7 +414,7 @@ saveEditBtn.addEventListener("click", async () => {
 
     try {
 
-        const response = await fetch(`/api/excel/update/${currentEditId}`, {
+        const response = await fetch(`${API}/api/excel/update/${currentEditId}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)

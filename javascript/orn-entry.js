@@ -13,6 +13,7 @@ function logout() {
     window.location.href = "/login";
 }
 
+const API = "https://ornmanagement-production.up.railway.app";
 // ==========================
 // Global ORN List
 // ==========================
@@ -39,11 +40,11 @@ async function saveOrn() {
 
         const url=editingId ?
 
-        "/api/orn/"+editingId
+        "${API}/api/orn/"+editingId
 
         :
 
-        "/api/orn";
+        "${API}/api/orn";
         await fetch(url,{
 
         method:method,
@@ -56,7 +57,7 @@ async function saveOrn() {
 
         });
 
-        const response = await fetch("/api/orn", {
+        const response = await fetch("${API}/api/orn", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -91,7 +92,7 @@ const ok=confirm("Delete this ORN ?");
 
 if(!ok) return;
 
-await fetch("/api/orn/"+id,{
+await fetch("${API}/api/orn/"+id,{
 
 method:"DELETE"
 
@@ -115,7 +116,7 @@ async function loadOrnTable() {
 
     try {
 
-        const response = await fetch("/api/orn");
+        const response = await fetch("${API}/api/orn");
 
         if (!response.ok) {
             throw new Error("Failed to fetch ORNs");
@@ -198,7 +199,7 @@ let editingId=null;
 
 async function editOrn(id){
 
-    const response=await fetch("/api/orn/"+id);
+    const response=await fetch("${API}/api/orn/"+id);
 
     const orn=await response.json();
 
@@ -249,7 +250,7 @@ async function applyFilter() {
         if (toDate) params.append("toDate", toDate);
         if (status) params.append("status", status);
 
-        const response = await fetch(`/api/orn/filter?${params.toString()}`);
+        const response = await fetch(`${API}/api/orn/filter?${params.toString()}`);
 
         if (!response.ok) {
             throw new Error("Filter request failed");
