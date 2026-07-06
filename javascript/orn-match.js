@@ -54,7 +54,7 @@ async function loadExcelFileOptions() {
 
     try {
 
-        const response = await fetch("${API}/api/excel/files");
+        const response = await fetch(`${API}/api/excel/files`);
 
         if (!response.ok) return;
 
@@ -88,7 +88,7 @@ async function runMatching() {
     try {
 
         const response = await fetch(
-            "${API}/api/matching/run?fileName=" + encodeURIComponent(fileName),
+            `${API}/api/matching/run?fileName=` + encodeURIComponent(fileName),
             { method: "POST" }
         );
 
@@ -258,7 +258,7 @@ async function viewDetails(orn) {
         const fileName = excelFileSelect.value;
 
         const response = await fetch(
-            "${API}/api/matching/details/" + encodeURIComponent(orn) +
+            `${API}/api/matching/details/` + encodeURIComponent(orn) +
             "?fileName=" + encodeURIComponent(fileName)
         );
 

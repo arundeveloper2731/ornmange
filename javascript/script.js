@@ -19,7 +19,7 @@ window.onload = function () {
 
 async function loadDashboard() {
     try {
-        const response = await fetch("${API}/api/index");
+        const response = await fetch(`${API}/api/index`);
         if (!response.ok) {
             throw new Error("API Error");
         }

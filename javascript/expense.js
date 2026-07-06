@@ -9,7 +9,7 @@ function logout() {
 
 const API = "https://ornmanagement-production.up.railway.app";
 
-const API_URL = "${API}/api/expenses";
+const API_URL = `${API}/api/expenses`;
 
 const form = document.getElementById("expenseForm");
 

@@ -134,7 +134,7 @@ async function uploadFile() {
 
     try {
 
-        const response = await fetch("${API}/api/excel/upload", {
+        const response = await fetch(`${API}/api/excel/upload`, {
             method: "POST",
             body: formData
         });
@@ -164,7 +164,7 @@ async function uploadFile() {
 async function loadUploadedFiles() {
 
     try {
-        const response = await fetch("${API}/api/excel/files");
+        const response = await fetch(`${API}/api/excel/files`);
 
         if (!response.ok) {
             throw new Error("Failed to load uploaded files");

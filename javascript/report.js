@@ -30,7 +30,7 @@ async function loadSummary() {
 
     try {
 
-        const response = await fetch("${API}/api/reports/summary");
+        const response = await fetch(`${API}/api/reports/summary`);
 
         if (!response.ok)
             throw new Error("Unable to load summary");
@@ -54,7 +54,7 @@ async function loadReports() {
 
     try {
 
-        let url = "$API}/api/reports?";
+        let url = `$API}/api/reports?`;
 
         if (fromDate.value)
             url += "from=" + fromDate.value + "&";
@@ -119,7 +119,7 @@ searchBtn.addEventListener("click", () => {
 
 exportExcelBtn.addEventListener("click", () => {
 
-    let url = "${API}/api/reports/export/excel?";
+    let url = `${API}/api/reports/export/excel?`;
 
     if (fromDate.value)
         url += "from=" + fromDate.value + "&";
@@ -137,7 +137,7 @@ exportExcelBtn.addEventListener("click", () => {
 
 exportPdfBtn.addEventListener("click", () => {
 
-    let url = "${API}/api/reports/export/pdf?";
+    let url = `${API}/api/reports/export/pdf?`;
 
     if (fromDate.value)
         url += "from=" + fromDate.value + "&";
