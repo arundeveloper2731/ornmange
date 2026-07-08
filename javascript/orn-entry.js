@@ -13,7 +13,7 @@ function logout() {
     window.location.href = "/login";
 }
 
-const API = "ornmanagement-production.up.railway.app";
+const API = "https://ornmanagement-production.up.railway.app";
 // ==========================
 // Global ORN List
 // ==========================
@@ -45,7 +45,8 @@ async function saveOrn() {
         :
 
         `${API}/api/orn`;
-        await fetch(url,{
+
+        const response = await fetch(url,{
 
         method:method,
 
@@ -55,14 +56,6 @@ async function saveOrn() {
 
         body:JSON.stringify(ornData)
 
-        });
-
-        const response = await fetch(`${API}/api/orn`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(ornData)
         });
 
         if (!response.ok) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
                 <p>ORN Management System</p>
             </div>
        <div>
-            <form  id="loginform" action="/login" method="post">
+            <form  id="loginform" action="https://ornmanagement-production.up.railway.app/login" method="post">
                 <div class="input-group">
                     <label for="">UserName</label>
                     <input type="text" id="username" name="username" placeholder="enter username" required>
@@ -37,16 +37,21 @@
         </p>
     </div>
 
-    <div th:if="${param.error}" style="color:red;">
+    <div id="error-msg" style="color:red; display:none;">
             Invalid Username or Password
         </div>
 
-        <div th:if="${param.logout}" style="color:green;">
+        <div id="logout-msg" style="color:green; display:none;">
             Logged out successfully
         </div>
 
     </div>
-    <script th:src="@{/javascript/login.js}"></script>
+    <script src="/javascript/login.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.has("error")) document.getElementById("error-msg").style.display = "block";
+        if (params.has("logout")) document.getElementById("logout-msg").style.display = "block";
+    </script>
     
 </body>
 </html>

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
-</html>
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -49,13 +47,17 @@
             <p>
                 Already Have account? <a href="/html/login.html">Login</a>
             </p>
-            <div th:if="${param.registered}">
+            <div id="registered-msg" style="display:none;">
                 Registration Successful. Please Login.
             </div>
         </div>
     </div>
 
-    <script th:src="@{/javascript/signup.js}"></script>
+    <script src="/javascript/signup.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.has("registered")) document.getElementById("registered-msg").style.display = "block";
+    </script>
 
 </body>
 

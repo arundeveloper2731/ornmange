@@ -7,7 +7,7 @@ function logout() {
     window.location.href = "login.html";
 }
 
-const API = "ornmanagement-production.up.railway.app";
+const API = "https://ornmanagement-production.up.railway.app";
 
 
 const fromDate = document.getElementById("fromDate");
@@ -54,7 +54,7 @@ async function loadReports() {
 
     try {
 
-        let url = `$API}/api/reports?`;
+        let url = `${API}/api/reports?`;
 
         if (fromDate.value)
             url += "from=" + fromDate.value + "&";
